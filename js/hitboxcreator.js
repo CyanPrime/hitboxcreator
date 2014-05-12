@@ -233,14 +233,19 @@ function draw(){
 
 	ctx.globalAlpha = 0.5;
 	for(var i = 0; i < hitBoxes.length; i++){
-		if(hitBoxes[i].t == 0) ctx.fillStyle = "#00ffff";
+		if(hitBoxes[i].t == 0) ctx.fillStyle = "#00ff00";
+		else if(hitBoxes[i].t == 1) ctx.fillStyle = "#ff0000";
+		else if(hitBoxes[i].t == 2) ctx.fillStyle = "#0000ff";
+		else if(hitBoxes[i].t == 3) ctx.fillStyle = "#00ffff";
+		else if(hitBoxes[i].t == 4) ctx.fillStyle = "#ff00ff";
+		else if(hitBoxes[i].t == 5) ctx.fillStyle = "#ffff00";
 		ctx.fillRect(centerPos[0] + hitBoxes[i].x,centerPos[1] + hitBoxes[i].y,hitBoxes[i].w, hitBoxes[i].h);
 	}
 	ctx.globalAlpha = 1;
 
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	for(var i = 0; i < hitBoxes.length; i++){
-		if(hitBoxes[i].t == 0) ctx.fillStyle = "#ffffff";
+		/*if(hitBoxes[i].t == 0)*/ ctx.fillStyle = "#ffffff";
 		ctx.fillText(i, (centerPos[0] + hitBoxes[i].x) * resZoom, ((centerPos[1] + hitBoxes[i].y) * resZoom) + 7);
 	}
 
