@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+
+		<title>HitBox Creator | A Javascript Project</title>
+
+		<link rel='stylesheet' href='css/style.css' />
+
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script type="text/javascript" src="js/hitboxcreator.js"></script>
+	</head>
+	<body>
+		<div id="wrap">
+			<canvas id="canvas" width="640" height="480"></canvas>
+	
+			<input type="file" id="input" onchange="displayImg(this.files);"/>
+			<output id="file-output"></output>
+			<input class="posinput zoominput" type="text" id="zoom" onchange="changeZoom()"/> Change Zoom
+
+			<div class="inputwrap" id="charpos">
+				<input class="posinput" type="text" id="charx" />
+				<input class="posinput" type="text" id="chary" />
+				<div class="btn right" id="charbtn" onclick="moveChar();" /><small>Move Image</small></div>
+			</div>
+
+			<div class="inputwrap" id="hitboxinput">
+				<input class="posinput" type="text" id="hitx" />
+				<input class="posinput" type="text" id="hity" />
+				<input class="posinput" type="text" id="hitw" />
+				<input class="posinput" type="text" id="hith" />
+				<input class="posinput" type="text" id="hitt" />
+				<div class="btn right" id="hitbtn" onclick="addHitbox();" /><small>Add HitBox</small></div>
+			</div>
+
+			<div id="otherbtns">
+				<select id="hitboxdelete">
+					<option>None</option>
+				</select>
+				<div class="btn" id="hitbtn" onclick="removeHitbox();" /><small>Remove HitBox</small></div>
+				<div class="btn" id="xmlbtn" onclick="outputToXML();" /><small>Get XML</small></div>
+			</div>
+
+			<pre id="xmloutput">
+
+			</pre>
+		</div>
+	</body>
+</html>

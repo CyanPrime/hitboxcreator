@@ -1,0 +1,57 @@
+body{
+	text-align: center;
+}
+
+#wrap{
+	text-align: left;
+	margin: auto;
+	width: 640px
+}
+
+#canvas{
+	float: left;
+}
+
+.posinput{
+	display: inline;
+	width: 50px;
+}
+
+.btn{
+	background-color: #aaaaaa;
+	color: #000000;
+	border: 2px solid #777777;	
+	padding: 0px 15px;
+	text-align: center;
+	display: inline;
+	margin-right: 10px;
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+.right{
+	float:right;
+}
+
+.inputwrap{
+	background-color: #222222;
+	color: #ffffff;
+	padding: 4px 10px;
+	border-radius: 10px;
+	margin-top: 10px;	
+}
+
+#otherbtns{
+	margin-top: 10px;
+}
+
+#xmloutput{
+	margin-top: 10px;
+	background-color: #cccccc;
+	border: 2px solid #777777;
+	padding: 5px 15px;
+	height: 500px;
+	width: 640px;
+
+	overflow-y: scroll;
+}
