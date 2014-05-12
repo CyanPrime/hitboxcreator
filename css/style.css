@@ -51,7 +51,32 @@ body{
 	border: 2px solid #777777;
 	padding: 5px 15px;
 	height: 500px;
-	width: 640px;
+	width: 606px;
 
 	overflow-y: scroll;
+}
+
+#setxmldialog{
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: none;
+	height: 500px;
+	width: 606px;
+	z-index: 75;
+
+	background-color: #dddddd;
+	color: #000000;
+	border: 2px solid #cccccc;	
+	padding: 0px 15px;
+	text-align: center;
+	border-radius: 15px;
+}
+
+#xmlsubmitbar{
+	margin-top: 10px;
+	width: 480px;
+	text-align: left;
+	z-index: 70;
+
 }

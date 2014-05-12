@@ -12,6 +12,14 @@
 	</head>
 	<body>
 		<div id="wrap">
+			<div id="setxmldialog">
+				<textarea id="xmlinput" cols="80" rows="28" name="xmlinput"></textarea>
+				<div id="xmlsubmitbar">
+					<div class="btn" id="ixmlbtn" onclick="processXML();" /><small>Process XML</small></div>
+					<div class="btn" id="xmlcancel" onclick="hideXMLTextBox();" /><small>Cancel</small></div>
+				</div>
+			</div>
+
 			<canvas id="canvas" width="640" height="480"></canvas>
 	
 			<input type="file" id="input" onchange="displayImg(this.files);"/>
@@ -39,6 +47,7 @@
 				</select>
 				<div class="btn" id="hitbtn" onclick="removeHitbox();" /><small>Remove HitBox</small></div>
 				<div class="btn" id="xmlbtn" onclick="outputToXML();" /><small>Get XML</small></div>
+				<div class="btn" id="sxmlbtn" onclick="showXMLTextBox();" /><small>Set XML</small></div>
 			</div>
 
 			<pre id="xmloutput">

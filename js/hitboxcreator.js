@@ -91,23 +91,82 @@ function outputToXML(){
 		console.log("xml printing");
 		var xml = "\<frame\>\n";
 			xml += "\t\<img\>" + imgName + "\<\/img\>\n";
-			xml += "\t\<x\>" + charPos[0]  + "\<\/x\>\n";
-			xml += "\t\<y\>" + charPos[1]  + "\<\/y\>\n";
+			xml += "\t\<cx\>" + charPos[0]  + "\<\/cx\>\n";
+			xml += "\t\<cy\>" + charPos[1]  + "\<\/cy\>\n";
 			xml += "\t\<numhitboxes\>" + hitBoxes.length  + "\<\/numhitboxes\>\n";
 			xml += "\t\<hitboxes\>\n";			
 			for(var i = 0; i < hitBoxes.length; i++){
 				xml += "\t\t\<hitbox\>\n";
-					xml += "\t\t\t\<x\>" + hitBoxes[i].x  + "\<\/x\>\n";
-					xml += "\t\t\t\<y\>" + hitBoxes[i].y  + "\<\/y\>\n";
-					xml += "\t\t\t\<w\>" + hitBoxes[i].w  + "\<\/w\>\n";
-					xml += "\t\t\t\<h\>" + hitBoxes[i].h  + "\<\/h\>\n";
-					xml += "\t\t\t\<t\>" + hitBoxes[i].t  + "\<\/t\>\n";
+					xml += "\t\t\t\<hx\>" + hitBoxes[i].x  + "\<\/hx\>\n";
+					xml += "\t\t\t\<hy\>" + hitBoxes[i].y  + "\<\/hy\>\n";
+					xml += "\t\t\t\<hw\>" + hitBoxes[i].w  + "\<\/hw\>\n";
+					xml += "\t\t\t\<hh\>" + hitBoxes[i].h  + "\<\/hh\>\n";
+					xml += "\t\t\t\<ht\>" + hitBoxes[i].t  + "\<\/ht\>\n";
 				xml += "\t\t\<\/hitbox\>\n";				
 			}
 			xml += "\t\<\/hitboxes\>\n";
 		xml += "\<\/frame\>";
 		$('#xmloutput').text(xml);
 	}
+}
+
+function showXMLTextBox(){
+	$('#setxmldialog').css('display', 'block');
+}
+
+function hideXMLTextBox(){
+	$('#setxmldialog').css('display', 'none');
+}
+
+function processXML(){
+	if(charImgLoaded){
+		console.log("xml printing");
+		var xml = $("#xmlinput").val();
+		console.log(xml);
+
+		var xmlDoc = $.parseXML( xml );
+		var xml = $( xmlDoc );
+		console.log(parseInt(xml.find( "cx" ).text()));
+		
+		var numVal = parseInt(xml.find( "cx" ).text());
+		charPos[0] = numVal;
+
+		var numVal = parseInt(xml.find( "cy" ).text());
+		charPos[1] = numVal;
+
+		var numHitBoxes = 0;
+		var numVal = parseInt(xml.find( "numhitboxes" ).text());
+		numHitBoxes = numVal;
+
+		var tempHitboxes = [];
+		for(var i = 0; i < numHitBoxes; i++){
+			var hitBoxDoc = xml.find( "hitbox" )[i];
+			var hitBoxXML =  $( hitBoxDoc );
+			var tempHitbox = new HitBox(0,0,0,0,0);		
+
+			var numVal = parseInt(hitBoxXML.find( "hx" ).text());
+			tempHitbox.x = numVal;
+
+			var numVal = parseInt(hitBoxXML.find( "hy" ).text());
+			tempHitbox.y  = numVal;
+	
+			var numVal = parseInt(hitBoxXML.find( "hw" ).text());
+			tempHitbox.w = numVal;
+
+			var numVal = parseInt(hitBoxXML.find( "hh" ).text());
+			tempHitbox.h  = numVal;
+
+			var numVal = parseInt(hitBoxXML.find( "ht" ).text());
+			tempHitbox.t  = numVal;
+
+			tempHitboxes.push(tempHitbox);
+		}
+
+		hitBoxes = tempHitboxes;
+	}
+
+	updateHitboxdelete();
+	hideXMLTextBox();
 }
 
 function displayImg(files) {
